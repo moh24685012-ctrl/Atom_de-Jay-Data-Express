@@ -1,0 +1,37 @@
+<?php
+if(isset($_POST['submit'])){
+    $name = $_POST['name'];
+    $network = $_POST['network'];
+    $phone = $_POST['phone'];
+    $order = "Name: $name | Network: $network | Phone: $phone \n";
+    file_put_contents('orders.txt', $order, FILE_APPEND);
+    echo "<script>alert('Order received successfully!');</script>";
+}
+?>
+
+<!DOCTYPE html>
+<style>
+    body { font-family: Arial; padding: 50px; background-color: #f4f4f4; }
+    form { background: white; padding: 20px; border-radius: 8px; max-width: 300px; }
+    input, select { width: 100%; padding: 10px; margin: 10px 0; }
+</style>
+
+<html>
+<head>
+    <title>My Data Store</title>
+</head>
+<body>
+    <h1>Welcome to My Data Store</h1>
+    <form action="" method="post">
+        Your Name: <input type="text" name="name" required><br><br>
+        Network: 
+        <select name="network">
+            <option value="MTN">MTN</option>
+            <option value="Telecel">Telecel</option>
+            <option value="AirtelTigo">AirtelTigo</option>
+        </select><br><br>
+        Phone Number: <input type="text" name="phone" required><br><br>
+        <input type="submit" name="submit" value="Submit Order">
+    </form>
+</body>
+</html>
